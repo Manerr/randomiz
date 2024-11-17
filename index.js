@@ -1,9 +1,9 @@
 
 try{
-	module.exports = { randFloor,randInt,choice,shuffle,pick,pickPop };
+	module.exports = { randBits,randBytes,randFloor,randInt,randToken,choice,shuffle,pick,pickPop };
 }
 catch(e){
-	randomiz = { randFloor,randInt,choice,shuffle,pick,pickPop };
+	randomiz = { randBits,randBytes,randFloor,randInt,randToken,choice,shuffle,pick,pickPop };
 }
 
 
@@ -12,6 +12,24 @@ function missingArg(a,b){
 	return !( a != null && b != null );
 
 }
+
+function randBits(n){
+
+	return randomBytes(n).map(function(x){if(x > 127){return 1}return 0})
+
+}
+
+function randBytes(n){
+
+	let output = [];
+	for (var i = 0; i < n; i++) {
+		output.push( randInt(0,255) );
+	}
+
+	return output;
+
+}
+
 
 function randFloor(a,b){
 
@@ -31,20 +49,20 @@ function randInt(a,b){
 
 }
 
-function randBytes(n){
+function randToken(n){
 
-	let output = [];
+	let l = "";
+
 	for (var i = 0; i < n; i++) {
-		output.push( randInt(0,255) );
+
+		char = pick( [randInt(0x30,0x39) , randInt(0x40,0x5a) , randInt(0x61,0x7a) ]) ;
+
+		l += String.fromCharCode( char );
 	}
 
-	return output;
 
-}
 
-function randBits(n){
-
-	return randomBytes(n).map(function(x){if(x > 127){return 1}return 0})
+	return l;
 
 }
 
@@ -78,13 +96,16 @@ function choice(l,count){
 function pick(l){
 
 	if( typeof l == "string" ){	l = l.split("") }
-	return choice(l,1);
+	let i =	randInt(0,l.length - 1);
+	return l.slice( i , i + 1)[0];
 
 }
 
 function pickPop(l){
 	if( typeof l == "string" ){ return pick(l) }
-	return l.splice( randInt(0,l.length - 1) ,1);	
+	let i =	randInt(0,l.length - 1)
+	return l.splice( i , i + 1)[0];	
 
 }
+
 
