@@ -1,3 +1,4 @@
+randFloor = randFloat;
 
 try{
 	module.exports = { randBits,randBytes,randFloat,randFloor,randInt,randToken,choice,pick,pickPop,shuffle };
@@ -41,7 +42,6 @@ function randFloat(a,b){
 }
 
 // What a naming mistake I've done here...
-randFloor = randFloat;
 
 function randInt(a,b){
 
@@ -110,5 +110,4 @@ function pickPop(l){
 	return l.splice( i , i + 1)[0];	
 
 }
-
 
