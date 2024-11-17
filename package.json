@@ -1,6 +1,6 @@
 {
   "name": "randomiz",
-  "version": "1.2.1",
+  "version": "1.2.11",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -8,5 +8,9 @@
   "keywords": ["random","math","randomizer","randomness","game making","front-end","back-end","math","mathematics","crypto","cryptography"],
   "author": "Manerr - Paul Thorel",
   "license": "MIT",
-  "description": "A npm library making randomness easier"
+  "description": "A npm library making randomness easier",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manerr/randomiz"
+  }
 }
