@@ -2,16 +2,32 @@
   "name": "randomiz",
   "version": "1.3.2",
   "main": "index.js",
-  "files": ["index.js","README.md","package.json"],
+  "files": [
+    "index.js",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["random","math","randomizer","randomness","game making","front-end","back-end","math","mathematics","crypto","cryptography"],
+  "keywords": [
+    "random",
+    "math",
+    "randomizer",
+    "randomness",
+    "game making",
+    "front-end",
+    "back-end",
+    "math",
+    "mathematics",
+    "crypto",
+    "cryptography"
+  ],
   "author": "Manerr - Paul Thorel",
   "license": "MIT",
   "description": "A npm library making randomness easier",
   "repository": {
     "type": "git",
-    "url": "https://github.com/manerr/randomiz"
+    "url": "git+https://github.com/manerr/randomiz.git"
   }
 }
