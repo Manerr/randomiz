@@ -15,7 +15,7 @@ function missingArg(a,b){
 
 function randBits(n){
 
-	return randomBytes(n).map(function(x){if(x > 127){return 1}return 0})
+	return randBytes(n).map(function(x){if(x > 127){return 1}return 0})
 
 }
 
