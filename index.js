@@ -1,9 +1,9 @@
 
 try{
-	module.exports = { randBits,randBytes,randFloor,randInt,randToken,choice,shuffle,pick,pickPop };
+	module.exports = { randBits,randBytes,randFloat,randFloor,randInt,randToken,choice,pick,pickPop,shuffle };
 }
 catch(e){
-	randomiz = { randBits,randBytes,randFloor,randInt,randToken,choice,shuffle,pick,pickPop };
+	randomiz = { randBits,randBytes,randFloat,randFloor,randInt,randToken,choice,pick,pickPop,shuffle };
 }
 
 
@@ -31,7 +31,7 @@ function randBytes(n){
 }
 
 
-function randFloor(a,b){
+function randFloat(a,b){
 
 	if(missingArg(a,b)){ return }
 	if( a > b ){let c = a;a = b;b = c;}
@@ -39,6 +39,9 @@ function randFloor(a,b){
 	return a + (b - a) * Math.random();
 
 }
+
+// What a naming mistake I've done here...
+randFloor = randFloat;
 
 function randInt(a,b){
 

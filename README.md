@@ -1,4 +1,5 @@
 
+
 [![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)](https://nodejs.org/en) ![](https://img.shields.io/npm/dm/randomiz.svg) ![](https://img.shields.io/npm/dw/randomiz.svg)
 
 
@@ -12,10 +13,12 @@ This module provides commonly used randomization utilities to simplify your code
 ## Introduction
 
 `randomiz` includes utility functions for:
-- Generating with flexibility random numbers.
-- Random stuff on arrays.
+- Generating with flexibility random strings/arrays/numbers.
+- Random stuff on arrays/strings.
 
-Feel free to report any issues or fork on GitHub: [https://github.com/manerr/randomiz](https://github.com/manerr/randomiz)
+Feel free to report any issues or fork on Github: [https://github.com/manerr/randomiz](https://github.com/manerr/randomiz)
+
+Full doc: [documentation.md](https://github.com/manerr/randomiz/blob/master/documentation.md)
 
 ## Features
 
