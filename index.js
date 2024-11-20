@@ -1,10 +1,11 @@
+// What a naming mistake I've done here...
 randFloor = randFloat;
 
 try{
-	module.exports = { randBits,randBytes,randFloat,randFloor,randInt,randToken,choice,pick,pickPop,shuffle };
+	module.exports = { randBits,randBool,randBytes,randFloat,randFloor,randInt,randSign,randToken,choice,pick,pickPop,shuffle, randEmoji};
 }
 catch(e){
-	randomiz = { randBits,randBytes,randFloat,randFloor,randInt,randToken,choice,pick,pickPop,shuffle };
+	randomiz = { randBits,randBool,randBytes,randFloat,randFloor,randInt,randSign,randToken,choice,pick,pickPop,shuffle, randEmoji};
 }
 
 
@@ -20,6 +21,8 @@ function randBits(n){
 
 }
 
+function randBool(){return Math.random()<=.5;}
+
 function randBytes(n){
 
 	let output = [];
@@ -31,7 +34,6 @@ function randBytes(n){
 
 }
 
-
 function randFloat(a,b){
 
 	if(missingArg(a,b)){ return }
@@ -41,8 +43,6 @@ function randFloat(a,b){
 
 }
 
-// What a naming mistake I've done here...
-
 function randInt(a,b){
 
 	if(missingArg(a,b)){ return }
@@ -50,6 +50,10 @@ function randInt(a,b){
 	
 	return Math.floor(a + ( (b + 1) - a) * Math.random());
 
+}
+
+function randSign(a,b){
+	if(Math.random() >= .5 ){return 1}return -1;
 }
 
 function randToken(n){
@@ -62,8 +66,6 @@ function randToken(n){
 
 		l += String.fromCharCode( char );
 	}
-
-
 
 	return l;
 
@@ -111,3 +113,6 @@ function pickPop(l){
 
 }
 
+function randEmoji() {
+    return pick(["😀", "😂", "🥰", "😎", "🤔", "🙃", "😭", "😞", "🫠", "😍", "🤩", "🥳", "🤯"]);
+}
