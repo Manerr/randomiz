@@ -1,14 +1,4 @@
-// What a naming mistake I've done here...
-randFloor = randFloat;
-
-try{
-	module.exports = { randBits,randBool,randBytes,randFloat,randFloor,randInt,randSign,randToken,choice,pick,pickPop,shuffle, randEmoji};
-}
-catch(e){
-	randomiz = { randBits,randBool,randBytes,randFloat,randFloor,randInt,randSign,randToken,choice,pick,pickPop,shuffle, randEmoji};
-}
-
-_r = Math.random;
+__r = Math.random;
 
 
 function missingArg(a,b){
@@ -22,7 +12,7 @@ function randBits(n){
 	let s = "";let r;
 	
 	for (var i = 0; i < n; i++) {
-		if( _r() < .5){ r = "1" }
+		if( __r() < .5){ r = "1" }
 		else{ r = "0" }
 		s = s.concat(r);
 	}
@@ -31,7 +21,7 @@ function randBits(n){
 
 }
 
-function randBool(){return _r()<=.5;}
+function randBool(w = .5){return __r() < w ;}
 
 function randBytes(n){
 
@@ -49,21 +39,25 @@ function randFloat(a,b){
 	if(missingArg(a,b)){ return }
 	if( a > b ){let c = a;a = b;b = c;}
 	
-	return a + (b - a) * _r();
+	return a + (b - a) * __r();
 
+}
+
+function randID(n){
+	return randInt( 10 ** (n - 1)  , (10 ** n) - 1);
 }
 
 function randInt(a,b){
 
 	if(missingArg(a,b)){ return }
 	if( a > b ){let c = a;a = b;b = c;}
-	
-	return Math.floor(a + ( (b + 1) - a) * _r());
+
+	return Math.floor( a + ( (b + 1) - a) * __r());
 
 }
 
-function randSign(a,b){
-	if(_r() >= .5 ){return 1}return -1;
+function randSign(w = .5){
+	if(__r() >= w ){return 1}return -1;
 }
 
 function randToken(n){
@@ -85,7 +79,7 @@ function shuffle(l){
 
 	if( typeof l == "string" ){	l = l.split("") }
 
-	let copy = l.flat();
+	let copy = l.map((n)=>n);
 	let len = l.length;
 	let output = [];
 
@@ -126,3 +120,18 @@ function pickPop(l){
 function randEmoji() {
     return pick(["😀", "😂", "🥰", "😎", "🤔", "🙃", "😭", "😞", "🫠", "😍", "🤩", "🥳", "🤯"]);
 }
+
+
+// What a naming mistake I've done here...
+randFloor = randFloat;
+
+
+
+
+try{
+	module.exports = { randBits,randBool,randBytes,randFloat,randFloor,randID,randInt,randSign,randToken,choice,pick,pickPop,shuffle, randEmoji};
+}
+catch(e){
+	
+}
+

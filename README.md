@@ -13,7 +13,7 @@ This module provides commonly used randomization utilities to simplify your code
 ## Introduction
 
 `randomiz` includes utility functions for:
-- Generating with flexibility random strings/arrays/numbers.
+- Generating with flexibility random strings/arrays/numbers
 - Random stuff on arrays/strings.
 
 Feel free to report any issues or fork on Github: [https://github.com/manerr/randomiz](https://github.com/manerr/randomiz)
@@ -35,8 +35,7 @@ These functions are useful for game development, data sampling, and other scenar
 ## Installation
 
 Add the library to your project by copying the code or using a package manager (like npm :3 )  -> `npm -i randomiz`
-
-( just use `randomiz = require('randomiz')` or `import randomiz from 'randomiz'` ad for any other npm package ;) )
+Just use `randomiz = require('randomiz')` or `import {randBytes,randToken} from 'randomiz'` as for any other npm package ;) 
 
  
 
