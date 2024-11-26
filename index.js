@@ -1,20 +1,13 @@
 __r = Math.random;
 
-
-function missingArg(a,b){
-
-	return !( a != null && b != null );
-
-}
-
 function randBits(n){
 
 	let s = "";let r;
 	
 	for (var i = 0; i < n; i++) {
+		r = "0";
 		if( __r() < .5){ r = "1" }
-		else{ r = "0" }
-		s = s.concat(r);
+		s += r;
 	}
 
 	return s;
@@ -25,33 +18,28 @@ function randBool(w = .5){return __r() < w ;}
 
 function randBytes(n){
 
-	let output = [];
-	for (var i = 0; i < n; i++) {
-		output.push( randInt(0,255) );
+	let output = new Array(n);
+	for (var i = output.length - 1; i >= 0; i--) {
+		output[i] = randInt(0,255);
 	}
-
 	return output;
 
 }
 
 function randFloat(a,b){
 
-	if(missingArg(a,b)){ return }
 	if( a > b ){let c = a;a = b;b = c;}
-	
 	return a + (b - a) * __r();
 
 }
 
 function randID(n){
-	return randInt( 10 ** (n - 1)  , (10 ** n) - 1);
+	return randInt( 10 ** (n - 1)  , (10 ** n) - 1).toString();
 }
 
 function randInt(a,b){
 
-	if(missingArg(a,b)){ return }
 	if( a > b ){let c = a;a = b;b = c;}
-
 	return Math.floor( a + ( (b + 1) - a) * __r());
 
 }
@@ -62,16 +50,11 @@ function randSign(w = .5){
 
 function randToken(n){
 
-	let l = "";
-
+	let s = "";
 	for (var i = 0; i < n; i++) {
-
-		char = pick( [randInt(0x30,0x39) , randInt(0x40,0x5a) , randInt(0x61,0x7a) ]) ;
-
-		l += String.fromCharCode( char );
+		s += String.fromCharCode( "-_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"[randInt(0,63)] );
 	}
-
-	return l;
+	return s;
 
 }
 
@@ -79,15 +62,14 @@ function shuffle(l){
 
 	if( typeof l == "string" ){	l = l.split("") }
 
-	let copy = l.map((n)=>n);
+	let copy = l.map((n) => n);
 	let len = l.length;
 	let output = [];
 
 	let i = 0;
-	while( i < len ){
+	for(let i = 0; i < len;i++){
 
 		output.push( copy.splice(randInt(0,copy.length - 1),1)[0] );
-		i++;
 
 	}
 
@@ -134,4 +116,5 @@ try{
 catch(e){
 	
 }
+
 
