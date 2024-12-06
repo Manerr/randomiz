@@ -1,7 +1,7 @@
 -------
 ### - randomiz documentation
 
-#### Version 1.5.1
+#### Version 1.6.0
 - [github repo](https://github.com/manerr/randomiz) - [npm page](https://www.npmjs.com/package/randomiz)
 
 ### Installation

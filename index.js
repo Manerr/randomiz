@@ -34,7 +34,11 @@ function randFloat(a,b){
 }
 
 function randID(n){
-	return randInt( 10 ** (n - 1)  , (10 ** n) - 1).toString();
+	let s = "123456789"[randInt(0,8)];
+	for (var i = 0; i < n - 1; ++i) {
+		s += "0123456789"[randInt(0,9)];
+	}
+	return s;
 }
 
 function randInt(a,b){
@@ -52,7 +56,7 @@ function randToken(n){
 
 	let s = "";
 	for (var i = 0; i < n; i++) {
-		s += String.fromCharCode( "-_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"[randInt(0,63)] );
+		s += "-_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"[randInt(0,63)];
 	}
 	return s;
 
