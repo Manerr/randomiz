@@ -1,7 +1,8 @@
+
 -------
 ### - randomiz documentation
 
-#### Version 1.6.0
+#### Version 1.7.0
 - [github repo](https://github.com/manerr/randomiz) - [npm page](https://www.npmjs.com/package/randomiz)
 
 ### Installation
@@ -9,7 +10,7 @@
 Add the library to your project by copying the code or using a package manager (like npm :3 )  -> `npm -i randomiz`
 Just use `randomiz = require('randomiz')` or `import {randBytes,randToken} from 'randomiz'` as for any other npm package ;) 
 
-##### (Note that Math.random() which is used here doesn't give very long floating poing numbers so forgive randInt(10\*\*20) .
+##### (Note that the builtin Math.random() which is used here doesn't give very long floating poing numbers so forgive randInt(10\*\*20) .
  
 -------
 
@@ -60,6 +61,12 @@ Just use `randomiz = require('randomiz')` or `import {randBytes,randToken} from 
 - function pickPop(**array**)
     - returns (and pop) a random element from **array** 
     Unlike pick, it modify **array** (it'll "pop" an element from the original and returns it)
+
+- function randSlice(**array**,**n**){
+    - returns a **n** elements long slice from **array**
+    
+    Acts like **pick(array)** but on various size instead of one ( consider using **pick** if you want only one element -> better performance )
+
 
 -------
 
