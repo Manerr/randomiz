@@ -2,7 +2,7 @@
 -------
 ### - randomiz documentation
 
-#### Version 1.7.0
+#### Version 1.8.0
 - [github repo](https://github.com/manerr/randomiz) - [npm page](https://www.npmjs.com/package/randomiz)
 
 ### Installation
@@ -36,6 +36,10 @@ Just use `randomiz = require('randomiz')` or `import {randBytes,randToken} from 
 
 - function randInt(**a**,**b**)
     - returns a random integer number between **a** and **b**.
+
+
+- function randMat(**rows**,**cols**,**min**,**max**)
+    - returns a matrix with (**rows**,**cols**) containing random integer between **min** and **max**
 
 
 - function randSign(**weight = 0.5**)

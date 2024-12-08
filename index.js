@@ -25,6 +25,19 @@ function randBytes(n){
 
 }
 
+function randMat(rows, cols, min = 0, max = 255) {
+
+	let l = new Array(rows);
+	for (var x = 0; x < rows; x++) {
+		l[x] = new Array(cols);
+		for (var y = 0; y < cols; y++) {
+			l[x][y] = randInt(min,max);
+		}
+	}
+	return l;
+
+}
+
 function randFloat(a,b){
 
 	if( !b ){ b = a ; a = 0; }
@@ -107,11 +120,11 @@ function pickPop(l){
 
 function randSlice(l,count){
 
-	let len= l.length;
+	let len = l.length;
 	if(count > len || !len){return}
 	let i;
 	do{
-		i =	Math.floor( count * __r() );
+		i =	Math.floor( (count + 1) * __r() );
 	}
 	while (i + count > len);
 	return l.slice( i , i + count);
@@ -130,7 +143,7 @@ randFloor = randFloat;
 
 
 try{
-	module.exports = { randBits,randBool,randBytes,randFloat,randFloor,randID,randInt,randSign,randToken,choice,pick,pickPop,shuffle,randSlice,randEmoji};
+	module.exports = { randBits,randBool,randBytes,randMat,randFloat,randFloor,randID,randInt,randSign,randToken,choice,pick,pickPop,shuffle,randSlice,randEmoji};
 }
 catch(e){
 }
