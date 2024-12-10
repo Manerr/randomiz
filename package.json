@@ -1,6 +1,6 @@
 {
   "name": "randomiz",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "main": "index.js",
   "files": [
     "index.js",
@@ -24,7 +24,9 @@
     "cryptography",
     "randint",
     "randomization",
-    "maths"
+    "maths",
+    "string",
+    "matrix"
   ],
   "author": "Manerr - Paul Thorel",
   "license": "MIT",
