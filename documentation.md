@@ -42,6 +42,10 @@ Just use `randomiz = require('randomiz')` or `import {randBytes,randToken} from 
     - returns a matrix with (**rows**,**cols**) containing random integer between **min** and **max**
 
 
+- function randMultiple(**n**,**max**)
+    - returns a random number **x** where **x** = n ** random and 1 <= random <= **max** **
+
+
 - function randSign(**weight = 0.5**)
     - returns a random sign (returns either 1 or -1) with **weight**.
 

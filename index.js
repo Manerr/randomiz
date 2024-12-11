@@ -8,7 +8,6 @@ function randBits(n){
 		if( __r() < .5){ r = "1" }
 		s += r;
 	}
-
 	return s;
 
 }
@@ -38,6 +37,11 @@ function randMat(rows, cols, min = 0, max = 255) {
 
 }
 
+function randMultiple(n,mx){
+	return n * Math.ceil( mx  * __r() );
+}
+
+
 function randFloat(a,b){
 
 	if( !b ){ b = a ; a = 0; }
@@ -65,9 +69,7 @@ function randInt(a,b){
 }
 
 function randSign(w = .5){
-
 	if(__r() >= w ){return 1}return -1;
-
 }
 
 function randToken(n){
@@ -89,7 +91,7 @@ function shuffle(l){
 	let output = new Array(len);
 
 	for(let i = 0; i < len;i++){
-		output[i] = ( copy.splice(randInt(0,copy.length - 1),1)[0] );
+		output[i] = copy.splice(randInt(0,copy.length - 1),1)[0];
 	}
 
 	return output;
@@ -136,14 +138,12 @@ function randEmoji() {
 }
 
 
-// What a naming mistake
+// Naming mistake
 randFloor = randFloat;
 
 
-
-
 try{
-	module.exports = { randBits,randBool,randBytes,randMat,randFloat,randFloor,randID,randInt,randSign,randToken,choice,pick,pickPop,shuffle,randSlice,randEmoji};
+	module.exports = { randBits,randBool,randBytes,randMat,randMultiple,randFloat,randFloor,randID,randInt,randSign,randToken,choice,pick,pickPop,shuffle,randSlice,randEmoji};
 }
 catch(e){
 }
