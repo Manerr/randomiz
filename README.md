@@ -2,8 +2,6 @@
 
 [![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)](https://nodejs.org/en) ![](https://img.shields.io/npm/dm/randomiz.svg) [![NPM License](https://img.shields.io/npm/l/all-contributors.svg?style=flat)](https://opensource.org/license/mit)
 
-
-
 [![Issues](https://img.shields.io/github/issues-raw/manerr/randomiz.svg?maxAge=25000)](https://github.com/manerr/randomiz/issues) ![](https://img.shields.io/github/last-commit/manerr/randomiz.svg)   ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/manerr/randomiz.svg?style=flat) 
 # Randomiz - Randomness is easy now!
 
@@ -17,6 +15,7 @@
 
 **Documentation** 👉 [documentation.md](https://github.com/manerr/randomiz/blob/master/documentation.md)
 
+
 ----
 ## Features
 
@@ -27,3 +26,5 @@
 - `shuffle(l)` , `choice(l,count)`  , `pick(l)` , `pickPop(l)` , `randSlice(l,count)`  → **random tools on arrays** (strings are generally converted to 1-char arrays)
   
 It covers almost every use case, from data sampling to game development. 
+
+**Warning** 👉 Since 2.0.0, a cryptography safe randomizer is used, but since the casual way is pretty slow (using buffers and calling a cryptographic function every single call), I've tried to optimize some parts of the process. Feel free to report issues on github.

@@ -1,4 +1,52 @@
-__r = Math.random;
+let secureRandom;
+
+// Browser
+if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
+	const bufferSize = 1024;
+	let buffer = new Uint32Array(bufferSize);
+	let bufferIndex = bufferSize;
+
+	function refillBuffer() {
+		window.crypto.getRandomValues(buffer);
+		bufferIndex = 0;
+	}
+
+	secureRandom = function() {
+		if (bufferIndex >= bufferSize) {
+			refillBuffer();
+		}
+		return buffer[bufferIndex++] / 0xFFFFFFFF;
+	};
+}
+// NodeJS
+else if(typeof require !== 'undefined'){
+	const crypto = require('crypto');
+	const bufferSize = 1024;
+	let buffer = Buffer.alloc(bufferSize * 4);
+	let bufferIndex = bufferSize;
+
+	function refillBuffer() {
+		crypto.randomFillSync(buffer);
+		bufferIndex = 0;
+	}
+
+	secureRandom = function() {
+		if (bufferIndex >= bufferSize) {
+			refillBuffer();
+		}
+		const value = buffer.readUInt32BE(bufferIndex * 4);
+		bufferIndex++;
+		return value / (0xFFFFFFFF + 1);
+	};
+}
+// Unsecure one
+else{
+	console.warn("Seems that your browser/nodeJS environment doesn't support the crypto module, which is needed for security.Try to update.");
+	secureRandom = Math.random;
+}
+
+
+
 
 function randBits(n){
 
@@ -84,7 +132,10 @@ function randToken(n){
 
 function shuffle(l){
 
-	if( typeof l == "string" ){	l = l.split("") }
+	if( typeof l == "string" ){ 
+		l = l.split("") 
+		isstring = true;
+	}
 
 	let copy = l.map((n) => n);
 	let len = l.length;
@@ -94,7 +145,13 @@ function shuffle(l){
 		output[i] = copy.splice(randInt(0,copy.length - 1),1)[0];
 	}
 
-	return output;
+	if(!isstring){return output;}
+	l = "";
+	for (var i = output.length - 1; i >= 0; i--) {
+		l += output[i]
+	}
+	return l;
+
 
 }
 
@@ -134,7 +191,7 @@ function randSlice(l,count){
 }
 
 function randEmoji() {
-    return pick(["😀", "😂", "🥰", "😎", "🤔", "🙃", "😭", "😞", "🫠", "😍", "🤩", "🥳", "🤯"]);
+	return pick(["😀", "😂", "🥰", "😎", "🤔", "🙃", "😭", "😞", "🫠", "😍", "🤩", "🥳", "🤯"]);
 }
 
 
@@ -147,5 +204,4 @@ try{
 }
 catch(e){
 }
-
 

@@ -2,7 +2,7 @@
 -------
 ### - randomiz documentation
 
-#### Version 1.8.0
+#### Version 2.0.0
 - [github repo](https://github.com/manerr/randomiz) - [npm page](https://www.npmjs.com/package/randomiz)
 
 ### Installation
@@ -10,7 +10,7 @@
 Add the library to your project by copying the code or using a package manager (like npm :3 )  -> `npm -i randomiz`
 Just use `randomiz = require('randomiz')` or `import {randBytes,randToken} from 'randomiz'` as for any other npm package ;) 
 
-##### (Note that the builtin Math.random() which is used here doesn't give very long floating poing numbers so forgive randInt(10\*\*20) .
+##### Since version 2.0.0 , randomiz use a cryptographically strong random generator instead of Math.random(). It could reduces performances, so if you're looking for performances and if you don't need a secure generator (like for game development or client-side randomization cases),just use versions under v.2.0.0.
  
 -------
 
