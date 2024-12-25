@@ -45,7 +45,7 @@ else{
 	secureRandom = Math.random;
 }
 
-
+__r = secureRandom;
 
 
 function randBits(n){
