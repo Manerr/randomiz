@@ -1,51 +1,38 @@
 let secureRandom;
+let _arry = new Uint32Array(1);
 
-// Browser
-if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
-	const bufferSize = 1024;
-	let buffer = new Uint32Array(bufferSize);
-	let bufferIndex = bufferSize;
-
-	function refillBuffer() {
-		window.crypto.getRandomValues(buffer);
-		bufferIndex = 0;
+// Browser or node js supportting window.crypto 
+if (crypto !== undefined) {
+	
+	secureRandom = function(){
+		return crypto.getRandomValues(_arry)[0] / 0xffffffff;
 	}
-
-	secureRandom = function() {
-		if (bufferIndex >= bufferSize) {
-			refillBuffer();
-		}
-		return buffer[bufferIndex++] / 0xFFFFFFFF;
-	};
+	
 }
-// NodeJS
-else if(typeof require !== 'undefined'){
-	const crypto = require('crypto');
-	const bufferSize = 1024;
-	let buffer = Buffer.alloc(bufferSize * 4);
-	let bufferIndex = bufferSize;
-
-	function refillBuffer() {
-		crypto.randomFillSync(buffer);
-		bufferIndex = 0;
-	}
-
-	secureRandom = function() {
-		if (bufferIndex >= bufferSize) {
-			refillBuffer();
-		}
-		const value = buffer.readUInt32BE(bufferIndex * 4);
-		bufferIndex++;
-		return value / (0xFFFFFFFF + 1);
-	};
-}
-// Unsecure one
+// Unsafe environment
 else{
 	console.warn("Seems that your browser/nodeJS environment doesn't support the crypto module, which is needed for security.Try to update.");
 	secureRandom = Math.random;
 }
 
+
+
+
 __r = secureRandom;
+
+
+function randArray(n,min,max,float=false){
+
+	let r__intern = randInt;
+
+	if(float){	r__intern = randFloat;	}
+
+	let a = new Array(n);
+	for (var i = 0; i < a.length; i++) {
+		a[i] = r__intern(min,max);
+	}
+
+}
 
 
 function randBits(n){
@@ -64,7 +51,7 @@ function randBool(w = .5){return __r() < w ;}
 
 function randBytes(n){
 
-	let output = new Array(n);
+	let output = new Uint8Array(n);
 	for (var i = output.length - 1; i >= 0; i--) {
 		output[i] = randInt(0,255);
 	}
@@ -195,12 +182,10 @@ function randEmoji() {
 }
 
 
-// Naming mistake
-randFloor = randFloat;
 
 
 try{
-	module.exports = { randBits,randBool,randBytes,randMat,randMultiple,randFloat,randFloor,randID,randInt,randSign,randToken,choice,pick,pickPop,shuffle,randSlice,randEmoji};
+	module.exports = { randArray,randBits,randBool,randBytes,randMat,randMultiple,randFloat,randID,randInt,randSign,randToken,choice,pick,pickPop,shuffle,randSlice,randEmoji};
 }
 catch(e){
 }
