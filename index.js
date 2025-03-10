@@ -107,11 +107,28 @@ function randSign(w = .5){
 	if(__r() >= w ){return 1}return -1;
 }
 
-function randToken(n){
+function randToken(n,type = "all"){
 
 	let s = "";
+	let og = "-_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	if( type == "ABC"){
+		og = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	}
+	else if( type == "abc"){
+		og = "abcdefghijklmnopqrstuvwxyz";
+	}
+	else if(type == "ABC123"){
+		og = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	}
+	else if(type == "abc123"){
+		og = "abcdefghijklmnopqrstuvwxyz0123456789";
+	}
+
+	length = og.length();
+
 	for (var i = 0; i < n; i++) {
-		s += "-_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"[randInt(0,63)];
+		s += og[randInt(0,length)];
 	}
 	return s;
 

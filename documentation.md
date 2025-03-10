@@ -61,8 +61,21 @@
 - function randID(**n**)
     - returns a random numerical ID string with **n** characters: randID(**4**) = 1000>r>10000.
     
-- function randToken(**n**)
+- function randToken(**n**,**type**="all")
     - returns a random URL-safe token string with **n** characters.
+    - if( type == "ABC"){
+        og = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
+        else if( type == "abc"){
+            og = "abcdefghijklmnopqrstuvwxyz";
+        }
+        else if(type == "ABC123"){
+            og = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        }
+        else if(type == "abc123"){
+            og = "abcdefghijklmnopqrstuvwxyz0123456789";
+        }
+
 
 
 ----
